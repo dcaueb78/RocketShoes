@@ -8,6 +8,6 @@ export const Container = styled.View`
 export const Products = styled.ScrollView``;
 
 export const Text = styled.Text`
-  font-size: 96px;
+  font-size: 50px;
   color: white;
 `;

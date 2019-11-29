@@ -2,7 +2,11 @@ import styled from 'styled-components/native';
 
 import logo from '../../assets/images/logo.png';
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 25px;
+`;
 
 export const Logo = styled.Image.attrs({
   source: logo,

@@ -11,10 +11,10 @@ export default class Main extends Component {
       <>
         <Container>
           <Products horizontal>
-            <Text>oi</Text>
-            <Text>oi</Text>
-            <Text>oi</Text>
-            <Text>oi</Text>
+            <Text>Produto 1</Text>
+            <Text>Produto 2</Text>
+            <Text>Produto 3</Text>
+            <Text>Produto 4</Text>
           </Products>
         </Container>
       </>

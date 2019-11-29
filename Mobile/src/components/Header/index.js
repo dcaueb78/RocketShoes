@@ -7,7 +7,7 @@ export default function Header() {
     <>
       <Container>
         <Logo />
-        <Text>Oi</Text>
+        <Text>Cart</Text>
       </Container>
     </>
   );
