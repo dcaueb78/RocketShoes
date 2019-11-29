@@ -19,3 +19,5 @@ export const Text = styled.Text`
   color: white;
   font-size: 20px;
 `;
+
+export const Cart = styled.View``;

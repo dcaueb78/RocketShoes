@@ -1,13 +1,14 @@
 import React from 'react';
 
-import {Container, Logo, Text} from './styles';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Container, Logo} from './styles';
 
 export default function Header() {
   return (
     <>
       <Container>
         <Logo />
-        <Text>Cart</Text>
+        <Icon name="shopping-basket" size={32} color="#fff" />
       </Container>
     </>
   );
