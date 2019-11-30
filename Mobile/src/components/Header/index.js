@@ -8,7 +8,7 @@ export default function Header() {
     <>
       <Container>
         <Logo />
-        <Icon name="shopping-basket" size={32} color="#fff" />
+        <Icon name="shopping-basket" size={28} color="#fff" />
       </Container>
     </>
   );
