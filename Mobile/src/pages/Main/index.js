@@ -1,18 +1,27 @@
 /* eslint-disable react/state-in-constructor */
 import React, {Component} from 'react';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import {
   ProductList,
   List,
   ProductImage,
   ProductItem,
   Strong,
-  Span,
+  SpanPrice,
+  SpanCart,
+  CartBasketView,
+  CartButton,
 } from './styles';
 
 export default class Main extends Component {
   state = {
-    items: [{name: 'nome'}, {name: 'nome2'}, {name: '3'}],
+    items: [
+      {name: 'Tênis muito massaaaa'},
+      {name: 'Tênis muito massaaaa2'},
+      {name: 'Tênis muito massaaaa3'},
+    ],
   };
 
   render() {
@@ -33,7 +42,13 @@ export default class Main extends Component {
                 }}
               />
               <Strong>{item.name}</Strong>
-              <Span>R$129.90</Span>
+              <SpanPrice>R$129.90</SpanPrice>
+              <CartButton>
+                <CartBasketView>
+                  <Icon name="shopping-basket" size={20} color="#FFF" />
+                </CartBasketView>
+                <SpanCart>Adicionar ao Carrinho</SpanCart>
+              </CartButton>
             </ProductItem>
           )}
         />
