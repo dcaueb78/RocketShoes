@@ -13,19 +13,43 @@ export const CartInfos = styled.View`
 `;
 
 export const Product = styled.View`
-  background-color: red;
+  background-color: #fff;
 `;
 
-export const ProductInfo = styled.View``;
+export const ProductInfo = styled.View`
+  flex-direction: row;
+`;
+
+export const ProductDetails = styled.View`
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+`;
 
 export const ProductImage = styled.Image`
   width: 100px;
   height: 100px;
 `;
+export const ProductName = styled.Text`
+  font-size: 18px;
+`;
 
-export const ProductAmount = styled.View`
-  background-color: red;
-  width: 100px;
+export const ProductPrice = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const TrashIcon = styled(RectButton)`
+  width: 60px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ProductControlls = styled.View`
+  background-color: #eee;
+  flex: 1;
+  border-radius: 8px;
+
   height: 100px;
 `;
 
