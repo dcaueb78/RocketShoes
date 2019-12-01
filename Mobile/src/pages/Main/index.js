@@ -1,7 +1,6 @@
 /* eslint-disable react/state-in-constructor */
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {formatPrice} from '../../util/format';
 // Não utilizando API por utilizar aparelho físico na emulação
 // import api from '../../services/api';
 
@@ -83,7 +82,7 @@ export default class Main extends Component {
                 }}
               />
               <Strong>{item.title}</Strong>
-              <SpanPrice>{item.price}</SpanPrice>
+              <SpanPrice>R$ {item.price}</SpanPrice>
               <CartButton>
                 <CartBasketView>
                   <Icon name="shopping-basket" size={20} color="#FFF" />
