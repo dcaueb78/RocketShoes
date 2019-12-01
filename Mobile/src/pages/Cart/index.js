@@ -14,7 +14,9 @@ import {
   Total,
   ProductInfo,
   ProductImage,
-  ProductControlls,
+  ProductControls,
+  ProductControl,
+  ProductAmount,
   ProductDetails,
   ProductName,
   ProductPrice,
@@ -35,18 +37,25 @@ export default function Cart() {
             />
             <ProductDetails>
               <ProductName>Tênis de Caminhada Leve Confortável</ProductName>
-              <ProductPrice>R$129,90</ProductPrice>
+              <ProductPrice>R$ 129,90</ProductPrice>
             </ProductDetails>
             <TrashIcon>
               <Icon name="delete-forever" size={30} color="#7159c1" />
             </TrashIcon>
           </ProductInfo>
-          <ProductControlls />
+          <ProductControls>
+            <ProductControl>
+              <Icon name="remove-circle-outline" size={30} color="#7159c1" />
+              <ProductAmount value="2" />
+              <Icon name="add-circle-outline" size={30} color="#7159c1" />
+            </ProductControl>
+            <ProductPrice>R$ 129,90</ProductPrice>
+          </ProductControls>
         </Product>
         <CartFooter>
           <Total>
             <TotalText>TOTAL</TotalText>
-            <TotalPrice>R$1920,28</TotalPrice>
+            <TotalPrice>R$259,80</TotalPrice>
           </Total>
           <CartButton>
             <ButtonText>FINALIZAR PEDIDO</ButtonText>

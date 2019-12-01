@@ -9,7 +9,7 @@ export const CartInfos = styled.View`
   border-radius: 5px;
   margin: 20px;
   background-color: white;
-  padding: 10px;
+  padding: 15px;
 `;
 
 export const Product = styled.View`
@@ -40,17 +40,36 @@ export const ProductPrice = styled.Text`
 `;
 
 export const TrashIcon = styled(RectButton)`
-  width: 60px;
+  width: 30px;
   align-items: center;
   justify-content: center;
 `;
 
-export const ProductControlls = styled.View`
+export const ProductControls = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #eee;
   flex: 1;
   border-radius: 8px;
+  margin-top: 10px;
+  padding: 0 15px;
+  align-items: center;
+`;
 
-  height: 100px;
+export const ProductControl = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const ProductAmount = styled.TextInput.attrs({
+  readonly: true,
+})`
+  padding: 5px;
+  margin: 10px 5px;
+  border: 1px solid #ddd;
+  min-width: 52px;
+  border-radius: 6px;
+  background-color: #fff;
 `;
 
 export const CartFooter = styled.View``;
