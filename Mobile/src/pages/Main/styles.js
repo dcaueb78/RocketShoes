@@ -14,10 +14,16 @@ export const Text = styled.Text`
 `;
 
 export const List = styled.FlatList`
+  margin: 0 20px;
+`;
+
+export const ProductItem = styled.View`
   display: flex;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 20px;
+  margin: 0 10px;
+  max-width: 400px;
 `;
 
 export const ProductImage = styled.Image`
@@ -26,8 +32,6 @@ export const ProductImage = styled.Image`
   align-self: center;
   max-width: 200px;
 `;
-
-export const ProductItem = styled.View``;
 
 export const Strong = styled.Text`
   font-weight: bold;
@@ -45,15 +49,35 @@ export const SpanPrice = styled.Text`
   margin: 5px 0 20px;
   color: #191920;
 `;
-export const SpanCart = styled.Text``;
 
-export const CartBasketView = styled.View``;
+export const CartBasketView = styled.View`
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+`;
+export const CartNumber = styled.Text`
+  color: #fff;
+  margin-left: 4px;
+`;
 
 export const CartButton = styled(RectButton)`
   background: #7159c1;
   color: #fff;
   border: 0;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   margin-top: auto;
+
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const SpanCart = styled.Text`
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px;
 `;

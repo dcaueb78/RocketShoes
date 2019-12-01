@@ -13,6 +13,7 @@ import {
   SpanCart,
   CartBasketView,
   CartButton,
+  CartNumber,
 } from './styles';
 
 export default class Main extends Component {
@@ -46,8 +47,9 @@ export default class Main extends Component {
               <CartButton>
                 <CartBasketView>
                   <Icon name="shopping-basket" size={20} color="#FFF" />
+                  <CartNumber>3</CartNumber>
                 </CartBasketView>
-                <SpanCart>Adicionar ao Carrinho</SpanCart>
+                <SpanCart>ADICIONAR</SpanCart>
               </CartButton>
             </ProductItem>
           )}
