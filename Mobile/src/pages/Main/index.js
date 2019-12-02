@@ -29,6 +29,15 @@ class Main extends Component {
     this.setState({products: response.data});
   }
 
+  handleAddProduct = product => {
+    const {dispatch} = this.props;
+
+    dispatch({
+      type: 'ADD_TO_CART',
+      product,
+    });
+  };
+
   render() {
     const {products} = this.state;
 
