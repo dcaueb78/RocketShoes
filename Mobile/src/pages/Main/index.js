@@ -1,6 +1,7 @@
 /* eslint-disable react/state-in-constructor */
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {connect} from 'react-redux';
 
 import api from '../../services/api';
 
@@ -17,7 +18,7 @@ import {
   CartNumber,
 } from './styles';
 
-export default class Main extends Component {
+class Main extends Component {
   state = {
     products: [],
   };
@@ -46,7 +47,7 @@ export default class Main extends Component {
               />
               <Strong>{item.title}</Strong>
               <SpanPrice>R$ {item.price}</SpanPrice>
-              <CartButton>
+              <CartButton onPress={() => this.handleAddProduct(item)}>
                 <CartBasketView>
                   <Icon name="shopping-basket" size={20} color="#FFF" />
                   <CartNumber>3</CartNumber>
@@ -60,3 +61,5 @@ export default class Main extends Component {
     );
   }
 }
+
+export default connect()(Main);
