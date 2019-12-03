@@ -24,7 +24,7 @@ import {
   TrashIcon,
 } from './styles';
 
-function Cart({cart}) {
+function Cart({cart, dispatch}) {
   console.log(cart);
 
   return (
@@ -42,7 +42,10 @@ function Cart({cart}) {
                 <ProductName>{product.title}</ProductName>
                 <ProductPrice>R$ {product.price}</ProductPrice>
               </ProductDetails>
-              <TrashIcon>
+              <TrashIcon
+                onPress={() =>
+                  dispatch({type: 'REMOVE_FROM_CART', id: product.id})
+                }>
                 <Icon name="delete-forever" size={30} color="#7159c1" />
               </TrashIcon>
             </ProductInfo>
