@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as CartActions from '../../store/modules/cart/actions';
+import {formatPrice} from '../../util/format';
 
 import {
   Container,
@@ -27,7 +28,7 @@ import {
   IncrementButton,
 } from './styles';
 
-function Cart({cart, removeFromCart, updateAmount, navigation}) {
+function Cart({cart, total, removeFromCart, updateAmount, navigation}) {
   function increment(product) {
     updateAmount(product.id, product.amount + 1);
   }
@@ -49,7 +50,7 @@ function Cart({cart, removeFromCart, updateAmount, navigation}) {
               />
               <ProductDetails>
                 <ProductName>{product.title}</ProductName>
-                <ProductPrice>R$ {product.price}</ProductPrice>
+                <ProductPrice>{product.priceFormatted}</ProductPrice>
               </ProductDetails>
               <TrashIcon onPress={() => removeFromCart(product.id)}>
                 <Icon name="delete-forever" size={30} color="#7159c1" />
@@ -69,14 +70,14 @@ function Cart({cart, removeFromCart, updateAmount, navigation}) {
                   <Icon name="add-circle-outline" size={30} color="#7159c1" />
                 </IncrementButton>
               </ProductControl>
-              <ProductPrice>R$ 129,90</ProductPrice>
+              <ProductPrice>{product.subtotal}</ProductPrice>
             </ProductControls>
           </Product>
         ))}
         <CartFooter>
           <Total>
             <TotalText>TOTAL</TotalText>
-            <TotalPrice>R$259,80</TotalPrice>
+            <TotalPrice>{total}</TotalPrice>
           </Total>
           <CartButton onPress={() => navigation.navigate('Main')}>
             <ButtonText>FINALIZAR PEDIDO</ButtonText>
@@ -88,7 +89,16 @@ function Cart({cart, removeFromCart, updateAmount, navigation}) {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart,
+  cart: state.cart.map(product => ({
+    ...product,
+    subtotal: formatPrice(product.price * product.amount),
+    priceFormatted: formatPrice(product.price),
+  })),
+  total: formatPrice(
+    state.cart.reduce((total, product) => {
+      return total + product.price * product.amount;
+    }, 0)
+  ),
 });
 
 const mapDispatchToProps = dispatch =>

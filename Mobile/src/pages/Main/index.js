@@ -1,4 +1,3 @@
-/* eslint-disable react/state-in-constructor */
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {bindActionCreators} from 'redux';
@@ -42,6 +41,8 @@ class Main extends Component {
   render() {
     const {products} = this.state;
 
+    const {amount} = this.props;
+
     return (
       <ProductList>
         <List
@@ -60,7 +61,7 @@ class Main extends Component {
               <CartButton onPress={() => this.handleAddProduct(item)}>
                 <CartBasketView>
                   <Icon name="shopping-basket" size={20} color="#FFF" />
-                  <CartNumber>3</CartNumber>
+                  <CartNumber>{amount[item.id] || 0}</CartNumber>
                 </CartBasketView>
                 <SpanCart>ADICIONAR</SpanCart>
               </CartButton>
@@ -72,10 +73,17 @@ class Main extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+    return amount;
+  }, {}),
+});
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(CartActions, dispatch);
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Main);
