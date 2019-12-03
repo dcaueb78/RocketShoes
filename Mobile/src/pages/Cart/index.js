@@ -25,11 +25,13 @@ import {
 } from './styles';
 
 function Cart({cart}) {
+  console.log(cart);
+
   return (
     <Container>
       <CartInfos>
         {cart.map(product => (
-          <Product>
+          <Product key={product.id}>
             <ProductInfo>
               <ProductImage
                 source={{
@@ -47,7 +49,7 @@ function Cart({cart}) {
             <ProductControls>
               <ProductControl>
                 <Icon name="remove-circle-outline" size={30} color="#7159c1" />
-                <ProductAmount value="2" />
+                <ProductAmount value={String(product.amount)} />
                 <Icon name="add-circle-outline" size={30} color="#7159c1" />
               </ProductControl>
               <ProductPrice>R$ 129,90</ProductPrice>
