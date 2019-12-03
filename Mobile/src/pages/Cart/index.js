@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -23,35 +24,36 @@ import {
   TrashIcon,
 } from './styles';
 
-export default function Cart() {
+function Cart({cart}) {
   return (
     <Container>
       <CartInfos>
-        <Product>
-          <ProductInfo>
-            <ProductImage
-              source={{
-                uri:
-                  'https://static.netshoes.com.br/produtos/tenis-nike-shox-nz-eu-masculino/14/D12-9970-014/D12-9970-014_zoom1.jpg',
-              }}
-            />
-            <ProductDetails>
-              <ProductName>Tênis de Caminhada Leve Confortável</ProductName>
+        {cart.map(product => (
+          <Product>
+            <ProductInfo>
+              <ProductImage
+                source={{
+                  uri: product.image,
+                }}
+              />
+              <ProductDetails>
+                <ProductName>{product.title}</ProductName>
+                <ProductPrice>R$ {product.price}</ProductPrice>
+              </ProductDetails>
+              <TrashIcon>
+                <Icon name="delete-forever" size={30} color="#7159c1" />
+              </TrashIcon>
+            </ProductInfo>
+            <ProductControls>
+              <ProductControl>
+                <Icon name="remove-circle-outline" size={30} color="#7159c1" />
+                <ProductAmount value="2" />
+                <Icon name="add-circle-outline" size={30} color="#7159c1" />
+              </ProductControl>
               <ProductPrice>R$ 129,90</ProductPrice>
-            </ProductDetails>
-            <TrashIcon>
-              <Icon name="delete-forever" size={30} color="#7159c1" />
-            </TrashIcon>
-          </ProductInfo>
-          <ProductControls>
-            <ProductControl>
-              <Icon name="remove-circle-outline" size={30} color="#7159c1" />
-              <ProductAmount value="2" />
-              <Icon name="add-circle-outline" size={30} color="#7159c1" />
-            </ProductControl>
-            <ProductPrice>R$ 129,90</ProductPrice>
-          </ProductControls>
-        </Product>
+            </ProductControls>
+          </Product>
+        ))}
         <CartFooter>
           <Total>
             <TotalText>TOTAL</TotalText>
@@ -65,3 +67,9 @@ export default function Cart() {
     </Container>
   );
 }
+
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+export default connect(mapStateToProps)(Cart);
