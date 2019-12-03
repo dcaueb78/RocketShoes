@@ -61,6 +61,10 @@ export const ProductControl = styled.View`
   align-items: center;
 `;
 
+export const DecrementButton = styled(RectButton)``;
+
+export const IncrementButton = styled(RectButton)``;
+
 export const ProductAmount = styled.TextInput.attrs({
   readonly: true,
 })`

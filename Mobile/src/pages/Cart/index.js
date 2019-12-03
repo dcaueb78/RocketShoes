@@ -23,9 +23,19 @@ import {
   ProductName,
   ProductPrice,
   TrashIcon,
+  DecrementButton,
+  IncrementButton,
 } from './styles';
 
-function Cart({cart, removeFromCart}) {
+function Cart({cart, removeFromCart, updateAmount, navigation}) {
+  function increment(product) {
+    updateAmount(product.id, product.amount + 1);
+  }
+
+  function decrement(product) {
+    updateAmount(product.id, product.amount - 1);
+  }
+
   return (
     <Container>
       <CartInfos>
@@ -47,9 +57,17 @@ function Cart({cart, removeFromCart}) {
             </ProductInfo>
             <ProductControls>
               <ProductControl>
-                <Icon name="remove-circle-outline" size={30} color="#7159c1" />
+                <DecrementButton onPress={() => decrement(product)}>
+                  <Icon
+                    name="remove-circle-outline"
+                    size={30}
+                    color="#7159c1"
+                  />
+                </DecrementButton>
                 <ProductAmount value={String(product.amount)} />
-                <Icon name="add-circle-outline" size={30} color="#7159c1" />
+                <IncrementButton onPress={() => increment(product)}>
+                  <Icon name="add-circle-outline" size={30} color="#7159c1" />
+                </IncrementButton>
               </ProductControl>
               <ProductPrice>R$ 129,90</ProductPrice>
             </ProductControls>
@@ -60,7 +78,7 @@ function Cart({cart, removeFromCart}) {
             <TotalText>TOTAL</TotalText>
             <TotalPrice>R$259,80</TotalPrice>
           </Total>
-          <CartButton>
+          <CartButton onPress={() => navigation.navigate('Main')}>
             <ButtonText>FINALIZAR PEDIDO</ButtonText>
           </CartButton>
         </CartFooter>
