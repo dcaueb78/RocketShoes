@@ -31,10 +31,12 @@ class Main extends Component {
     this.setState({products: response.data});
   }
 
-  handleAddProduct = product => {
+  handleAddProduct = async product => {
+    const {navigation} = this.props;
     const {addToCart} = this.props;
+    navigation.navigate('Cart');
 
-    addToCart(product);
+    await addToCart(product);
   };
 
   render() {
