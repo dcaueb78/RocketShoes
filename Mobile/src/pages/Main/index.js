@@ -1,7 +1,9 @@
 /* eslint-disable react/state-in-constructor */
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import api from '../../services/api';
 
@@ -30,12 +32,9 @@ class Main extends Component {
   }
 
   handleAddProduct = product => {
-    const {dispatch} = this.props;
+    const {addToCart} = this.props;
 
-    dispatch({
-      type: 'ADD_TO_CART',
-      product,
-    });
+    addToCart(product);
   };
 
   render() {
@@ -71,4 +70,10 @@ class Main extends Component {
   }
 }
 
-export default connect()(Main);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Main);
