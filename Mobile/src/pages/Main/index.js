@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as CartActions from '../../store/modules/cart/actions';
+import {formatPrice} from '../../util/format';
 
 import api from '../../services/api';
 
@@ -57,7 +58,7 @@ class Main extends Component {
                 }}
               />
               <Strong>{item.title}</Strong>
-              <SpanPrice>R$ {item.price}</SpanPrice>
+              <SpanPrice>{formatPrice(item.price)}</SpanPrice>
               <CartButton onPress={() => this.handleAddProduct(item)}>
                 <CartBasketView>
                   <Icon name="shopping-basket" size={20} color="#FFF" />
